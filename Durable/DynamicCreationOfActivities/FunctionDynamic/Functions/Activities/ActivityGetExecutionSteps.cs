@@ -16,25 +16,25 @@ namespace FunctionDynamic
 
             var result = new List<ExecutionStep>();
 
-            if (jobId == 1)
+            if (jobId == 1) // Success
             {
                 result.Add(new ExecutionStep(nameof(ActivityHello.A_Hello), nameof(ActivityHello.A_Hello)));
                 result.Add(new ExecutionStep(nameof(ActivityRabbit.A_RabbitGood), nameof(ActivityRabbit.A_RabbitRollback)));
                 result.Add(new ExecutionStep(nameof(ActivityPapa.A_Papa), nameof(ActivityPapa.A_Papa)));
             }
-            else if (jobId == 2)
+            else if (jobId == 2) // Partial success
             {
                 result.Add(new ExecutionStep(nameof(ActivityHello.A_Hello), nameof(ActivityHello.A_Hello)));
                 result.Add(new ExecutionStep(nameof(ActivityRabbit.A_RabbitPartial), nameof(ActivityRabbit.A_RabbitRollback)));
                 result.Add(new ExecutionStep(nameof(ActivityPapa.A_Papa), nameof(ActivityPapa.A_Papa)));
             }
-            else if (jobId == 3)
+            else if (jobId == 3)  // Soft failure
             {
                 result.Add(new ExecutionStep(nameof(ActivityHello.A_Hello), nameof(ActivityHello.A_Hello)));
                 result.Add(new ExecutionStep(nameof(ActivityRabbit.A_RabbitFailure), nameof(ActivityRabbit.A_RabbitRollback)));
                 result.Add(new ExecutionStep(nameof(ActivityPapa.A_Papa), nameof(ActivityPapa.A_Papa)));
             }
-            else if (jobId == 4)
+            else if (jobId == 4) // Hard (exception) failure
             {
                 result.Add(new ExecutionStep(nameof(ActivityHello.A_Hello), nameof(ActivityHello.A_Hello)));
 

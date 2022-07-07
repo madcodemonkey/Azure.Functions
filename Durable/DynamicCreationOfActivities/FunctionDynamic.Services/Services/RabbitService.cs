@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using FunctionDynamic.Models;
+﻿using FunctionDynamic.Models;
 using Microsoft.Extensions.Logging;
 
 namespace FunctionDynamic.Services
@@ -19,7 +17,7 @@ namespace FunctionDynamic.Services
             _logger.LogInformation($"Good Rabbit: {jobId}.");
 
             var result = new ExecutionResult();
-            
+
             return await Task.FromResult(result);
         }
 
@@ -29,7 +27,7 @@ namespace FunctionDynamic.Services
 
             var result = new ExecutionResult();
             result.TryMarkAsPartial("Partial failure log text");
-            
+
             return await Task.FromResult(result);
         }
 
@@ -39,7 +37,7 @@ namespace FunctionDynamic.Services
 
             var result = new ExecutionResult();
             result.TryMarkAsFailure("Soft failure log text");
-            
+
             return await Task.FromResult(result);
         }
 
@@ -48,13 +46,13 @@ namespace FunctionDynamic.Services
             throw new ArgumentException("This is a rabbit exception!");
         }
 
-        public  async Task<ExecutionResult> DoRollbackWorkAsync(int jobId)
+        public async Task<ExecutionResult> DoRollbackWorkAsync(int jobId)
         {
             _logger.LogInformation($"Rollback Rabbit: {jobId}.");
 
             var result = new ExecutionResult();
             result.TryMarkAsFailure("Rollback needed log text");
-            
+
             return await Task.FromResult(result);
         }
     }

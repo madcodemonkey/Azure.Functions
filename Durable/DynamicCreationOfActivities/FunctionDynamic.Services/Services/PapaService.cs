@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using FunctionDynamic.Models;
+﻿using FunctionDynamic.Models;
 using Microsoft.Extensions.Logging;
 
 namespace FunctionDynamic.Services
@@ -19,9 +18,9 @@ namespace FunctionDynamic.Services
 
             var result = new ExecutionResult();
             result.TryMarkAsSuccess("Said papa");
-            
+
             return await Task.FromResult(result);
         }
-         
+
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using FunctionDynamic.Models;
+﻿using FunctionDynamic.Models;
 
 namespace FunctionDynamic.Services
 {

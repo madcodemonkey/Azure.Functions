@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FunctionDynamic.Models
+﻿namespace FunctionDynamic.Models
 {
     public class ExecutionResult
     {
