@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DotNetCoreNotIsolated": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7080",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
