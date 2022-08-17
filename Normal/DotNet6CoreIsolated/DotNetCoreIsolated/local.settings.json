@@ -1,7 +1,7 @@
 {
   "IsEncrypted": false,
   "Values": {
-    "APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=92c3da69-756b-46f7-9ad9-2c3ac4ca0908;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/",
+    "APPLICATIONINSIGHTS_CONNECTION_STRING": "---Your app insights connection string here---",
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
     "RunInformation": "Isolated 6 [My message]"
