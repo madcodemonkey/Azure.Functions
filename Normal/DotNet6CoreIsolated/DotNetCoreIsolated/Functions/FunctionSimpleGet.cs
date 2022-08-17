@@ -1,3 +1,4 @@
+using System.Collections.Specialized;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
@@ -20,7 +21,10 @@ public class FunctionSimpleGet
     {
         _logger.LogInformation("C# HTTP trigger function processed a request.");
 
-        var output = System.Web.HttpUtility.ParseQueryString(req.Url.Query);
+        // Getting query parameters (Way 1) - They are injected (see parameters above)
+        
+        // Getting query parameters (Way 2)
+        NameValueCollection output = System.Web.HttpUtility.ParseQueryString(req.Url.Query);
 
         var response = req.CreateResponse(HttpStatusCode.OK);
         response.Headers.Add("Content-Type", "text/plain; charset=utf-8");

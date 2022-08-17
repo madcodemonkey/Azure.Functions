@@ -7,8 +7,9 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddDotNetCoreIsolatedDependencies(this IServiceCollection sc)
     {
+        var serviceSettings = new ServiceSettings { RunInformation = Environment.GetEnvironmentVariable("RunInformation") };
 
-        sc.AddServices();
+        sc.AddServices(serviceSettings);
 
         return sc;
     }

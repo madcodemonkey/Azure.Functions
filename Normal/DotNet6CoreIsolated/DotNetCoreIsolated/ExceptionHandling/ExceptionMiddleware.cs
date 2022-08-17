@@ -38,7 +38,10 @@ public class ExceptionMiddleware : IFunctionsWorkerMiddleware
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unhandled exception encountered");
+            // Even though you can find the exceptions error message in the Application Log Exceptions area, the trace area does NOT
+            // give you the error message, it will only print out the text we put as the 2nd argument to this LogError method call,
+            // so let's log something useful in the trace log if they don't know to look in the error area for a stack trace.
+            _logger.LogError(ex, $"Unhandled exception encountered: {ex.Message}");
 
             // https://stackoverflow.com/a/73080248/97803
             // Requires Microsoft.Azure.Functions.Worker NuGet package of 1.8.0 to use the GetHttpRequestDataAsync extension method!
@@ -46,10 +49,10 @@ public class ExceptionMiddleware : IFunctionsWorkerMiddleware
             if (req == null)
                 throw;
 
-            MyExceptionHandlerMessage message = WrapTheException(ex);
+            MyExceptionHandlerMessage exceptionMessage = WrapTheException(ex);
 
             var response = req.CreateResponse();
-            await response.WriteAsJsonAsync(message, message.StatusCode);  // Found that you have to set statusCode here!
+            await response.WriteAsJsonAsync(exceptionMessage, exceptionMessage.StatusCode);  // Found that you have to set statusCode here!
             context.GetInvocationResult().Value = response;
         }
     }

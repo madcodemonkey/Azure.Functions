@@ -16,9 +16,11 @@ public static class FunctionSimpleGet
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
+        // Getting query parameters (Way 1)
         string? greeting1 = req.Query["greeting"];
         string? lastname1 = req.Query["lastname"];
 
+        // Getting query parameters (Way 2)
         IDictionary<string, string> output = req.GetQueryParameterDictionary();
         string? greeting2 = output.ContainsKey("greeting") ? req.Query["greeting"] : (string?) null;
         string? lastname2 = output.ContainsKey("lastname") ? req.Query["lastname"] : (string?) null;
