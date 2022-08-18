@@ -2,7 +2,7 @@
 
 ## Projects List
 - Common
-   - AppInsightsEnhancedWithSerilogSink - A Serilog example that I was using for common logging (it need work)
+   - AppInsightsEnhancedWithSerilogSink - A Serilog example that I was using for common logging (it needs work)
 - Durable 
    - DynamicCreationOfActivities - Shows a durable function example where I dynamically run activities base on the way the HttpTrigger is called.
 - Normal
