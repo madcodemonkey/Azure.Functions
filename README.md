@@ -13,3 +13,7 @@
    - ServiceBusTriggered 
       - AzureFunctionPowerShell - A Powershell fired by a ServiceBus trigger in an Azure Function
       - ConsoleSendServiceBusMessage - A Console app to create messages for the PowerShell program (TODO: Delete this and use my Console App that I created under Azure.ServiceBus)
+
+## Branching scheme
+- Main branch: .NET Core 6.0 examples (with the current exception of AppInsightsEnhancedWithSerilogSink and PowerShell items)
+- [Future] I will create a branch for older .NET items as I retire them.
