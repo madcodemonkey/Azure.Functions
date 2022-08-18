@@ -1,6 +1,15 @@
-# Azure.Functions.Examples
-Examples of various Azure Functions
-- Common - A folder with Azure function code that can be run in a normal or durable function
-- Durable - A folder with Azure durable function examples
-- Normal - A folder with Azure Function examples (that aren't durable function examples)
-- Powershell - Powershell code running in an Azure Function
+# Azure Functions
+
+## Projects List
+- Common
+   - AppInsightsEnhancedWithSerilogSink - A Serilog example that I was using for common logging (it need work)
+- Durable 
+   - DynamicCreationOfActivities - Shows a durable function example where I dynamically run activities base on the way the HttpTrigger is called.
+- Normal
+   - DotNet6CoreIsolated - Shows serveral HttpTriggers in .NET 6 Core using the new Isolated process mode.
+   - DotNet6CoreNotIsolated - Shows serveral HttpTriggers in .NET 6 Core using the older In Process mode.
+- Powershell 
+   - HttpTriggered - A PowerShell fired by a HttpTrigger running in an Azure Function (use VSCode to examine and run this code)
+   - ServiceBusTriggered 
+      - AzureFunctionPowerShell - A Powershell fired by a ServiceBus trigger in an Azure Function
+      - ConsoleSendServiceBusMessage - A Console app to create messages for the PowerShell program (TODO: Delete this an use my Console App that I created under Azure.ServiceBus)
