@@ -10,8 +10,8 @@ var host = new HostBuilder()
         // WARNING!  I have found no way to override connection string bindings for service bus in an ISOLATED Azure function.  
         //           This code seems to run AFTER the binding is checked and does NOT appear to override the connection string at all!
 
-        // You might need this depending on your local dev env
-        // var credentials = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ExcludeSharedTokenCacheCredential = true });
+        // You might need this depending on your local dev environment
+        // var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ExcludeSharedTokenCacheCredential = true });
         var credential = new DefaultAzureCredential();
 
         // -------------------------------------Start: App Configuration Example

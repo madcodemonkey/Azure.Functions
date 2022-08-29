@@ -27,7 +27,7 @@ public class Startup : FunctionsStartup
     // Note: This is called BEFORE Configure
     public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
     {
-        // You might need this depending on your local dev env
+        // You might need this depending on your local dev environment
         // var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ExcludeSharedTokenCacheCredential = true });
         var credential = new DefaultAzureCredential();
 
