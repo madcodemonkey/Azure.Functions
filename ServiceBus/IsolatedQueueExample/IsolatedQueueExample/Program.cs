@@ -1,7 +1,6 @@
 using Azure.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using QueueExample;
 using QueueExample.Services;
 
 
@@ -18,16 +17,19 @@ var host = new HostBuilder()
         // 2. Microsoft.Extensions.Configuration.AzureAppConfiguration
         // Docs: https://docs.microsoft.com/en-us/azure/azure-app-configuration/quickstart-azure-functions-csharp?tabs=isolated-process#connect-to-an-app-configuration-store
 
-        //var azureAppConfigurationEndpointUri = Environment.GetEnvironmentVariable("AzureAppConfigurationEndpoint");
+        var azureAppConfigurationEndpoint = Environment.GetEnvironmentVariable("AzureAppConfigurationEndpoint");
 
-        //builder.AddAzureAppConfiguration(options =>
-        //{
-        //    options.Connect(new Uri(azureAppConfigurationEndpointUri), credentials)
-        //        .ConfigureKeyVault(kv =>
-        //        {
-        //            kv.SetCredential(credentials);
-        //        });
-        //});
+        if (string.IsNullOrWhiteSpace(azureAppConfigurationEndpoint) == false)
+        {
+            builder.AddAzureAppConfiguration(options =>
+            {
+                options.Connect(new Uri(azureAppConfigurationEndpoint), credentials)
+                    .ConfigureKeyVault(kv =>
+                    {
+                        kv.SetCredential(credentials);
+                    });
+            });
+        }
         // -------------------------------------End: App Configuration Example
 
         // -------------------------------------Start: Key Vault Example
@@ -35,17 +37,14 @@ var host = new HostBuilder()
         // 1. Azure.Identity
         // 2. Azure.Extensions.AspNetCore.Configuration.Secrets 
         // Example: https://github.com/mizrael/AzureFunction-KeyVault/blob/main/Program.cs
+        //builder.AddEnvironmentVariables();
 
-        builder.AddEnvironmentVariables();
+        //var keyVaultEndpoint = Environment.GetEnvironmentVariable("AzureKeyVaultEndpoint");
 
-        var keyVaultEndpointUri = Environment.GetEnvironmentVariable("AzureKeyVaultEndpoint");
-
-        if (string.IsNullOrWhiteSpace(keyVaultEndpointUri))
-        {
-            throw new ArgumentException("please provide a valid VaultUri");
-        }
-
-        builder.AddAzureKeyVault(new Uri(keyVaultEndpointUri), credentials);
+        //if (string.IsNullOrWhiteSpace(keyVaultEndpoint) == false)
+        //{
+        //    builder.AddAzureKeyVault(new Uri(keyVaultEndpoint), credentials);
+        //}
         // -------------------------------------End: Key Vault Example
     })
     .ConfigureFunctionsWorkerDefaults(builder =>
