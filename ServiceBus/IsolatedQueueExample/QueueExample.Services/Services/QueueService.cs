@@ -7,7 +7,7 @@ public class QueueService : IQueueService
 {
     private readonly ServiceSettings _settings;
     private ServiceBusClient? _client;
-
+    
     /// <summary>Constructor</summary>
     public QueueService(ServiceSettings settings)
     {

@@ -8,7 +8,6 @@ namespace QueueExample.Services
         {
             sc.AddSingleton(settings);
             sc.AddScoped<IQueueService, QueueService>();
-
         }
     }
 }

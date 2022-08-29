@@ -5,9 +5,9 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InProcessQueueExample", "InProcessQueueExample\InProcessQueueExample.csproj", "{1685D969-C82B-45F6-A9B4-BF2CAB4EC6B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueExample.Services", "QueueExample.Services\QueueExample.Services.csproj", "{AAFF0966-9E48-4646-B8FB-76EC6EC70104}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueueExample.Services", "QueueExample.Services\QueueExample.Services.csproj", "{AAFF0966-9E48-4646-B8FB-76EC6EC70104}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueExample.Model", "QueueExample.Model\QueueExample.Model.csproj", "{B9453F4A-FCEE-4CFC-8988-A15C14EB0429}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueueExample.Model", "QueueExample.Model\QueueExample.Model.csproj", "{B9453F4A-FCEE-4CFC-8988-A15C14EB0429}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

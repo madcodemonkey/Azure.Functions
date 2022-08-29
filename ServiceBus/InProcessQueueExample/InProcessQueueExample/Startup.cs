@@ -1,52 +1,76 @@
-﻿//using Azure.Identity;
-//using Microsoft.Azure.Functions.Extensions.DependencyInjection;
-//using Microsoft.Extensions.Configuration;
-//using QueueExample.Services;
-//using System;
+﻿using Azure.Identity;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using QueueExample.Services;
+using System;
 
-//[assembly: FunctionsStartup(typeof(QueueExample.Startup))]
+[assembly: FunctionsStartup(typeof(QueueExample.Startup))]
 
-//namespace QueueExample;
+namespace QueueExample;
 
-//public class Startup : FunctionsStartup
-//{
-//    public override void Configure(IFunctionsHostBuilder builder)
-//    {
-//        var configuration = builder.GetContext().Configuration;
+public class Startup : FunctionsStartup
+{
+    // Note: This is called AFTER ConfigureAppConfiguration
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        var configuration = builder.GetContext().Configuration;
 
-//        var setting = new ServiceSettings
-//        {
-//            QueueConnectionString = configuration["ServiceBusConnectionString"], // configuration will be populated with both environment variables (default behavior) and app configuration (due to code below).
-//            QueueName = configuration["ServiceBusQueueName"]
-//        };
+        var setting = new ServiceSettings
+        {
+            QueueConnectionString = configuration["ServiceBusConnectionString"], // configuration will be populated with both environment variables (default behavior) and app configuration (due to code below).
+            QueueName = configuration["ServiceBusQueueName"]
+        };
 
-//        builder.Services.AddQueueExampleServices(setting);
-//    }
+        builder.Services.AddQueueExampleServices(setting);
+    }
 
-//    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
-//    {
-//        // Microsoft's current guidance for Azure Functions that are in the cloud is to use the reference notation
-//        // https://docs.microsoft.com/en-us/azure/app-service/app-service-key-vault-references?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=azure-cli#reference-syntax
-//        // which looks like this (note that it EXCLUDES the version):
-//        // @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/)
+    // Note: This is called BEFORE Configure
+    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+    {
+        // Microsoft's current guidance for Azure Functions that are in the cloud is to use the reference notation
+        // https://docs.microsoft.com/en-us/azure/app-service/app-service-key-vault-references?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=azure-cli#reference-syntax
+        // which looks like this (note that it EXCLUDES the version):
+        // @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/)
 
-//        var azureAppConfigurationEndpointUri = Environment.GetEnvironmentVariable("AzureAppConfigurationEndpoint");
+        // You might need this depending on your local dev env
+        // var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ExcludeSharedTokenCacheCredential = true });
+        var credential = new DefaultAzureCredential();
 
-//        if (!string.IsNullOrWhiteSpace(azureAppConfigurationEndpointUri))
-//        {
-//            // You might need this depending on your local dev env
-//            // var credentials = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ExcludeSharedTokenCacheCredential = true });
-//            var credentials = new DefaultAzureCredential();
 
-//            // Requires the Microsoft.Extensions.Configuration.AzureAppConfiguration
-//            builder.ConfigurationBuilder.AddAzureAppConfiguration(options =>
-//            {
-//                options.Connect(new Uri(azureAppConfigurationEndpointUri), credentials)
-//                    .ConfigureKeyVault(kv =>
-//                    {
-//                        kv.SetCredential(credentials);
-//                    });
-//            });
-//        }
-//    }
-//}
+        // -------------------------------------Start: App Configuration Example
+        // Required NuGet packages for Azure App Configuration:
+        // 1. Azure.Identity
+        // 2. Microsoft.Extensions.Configuration.AzureAppConfiguration
+        var azureAppConfigurationEndpoint = Environment.GetEnvironmentVariable("AzureAppConfigurationEndpoint");
+
+        if (string.IsNullOrWhiteSpace(azureAppConfigurationEndpoint) == false)
+        {
+            builder.ConfigurationBuilder.AddAzureAppConfiguration(options =>
+            {
+                options.Connect(new Uri(azureAppConfigurationEndpoint), credential)
+                    .ConfigureKeyVault(kv =>
+                    {
+                        kv.SetCredential(credential);
+                    });
+            });
+        }
+        // -------------------------------------End: App Configuration Example
+
+
+        // -------------------------------------Start: Key Vault Example
+        // Required NuGet packages for Azure App Configuration:
+        // 1. Azure.Identity
+        // 2. Azure.Extensions.AspNetCore.Configuration.Secrets
+        //var keyVaultEndpoint = Environment.GetEnvironmentVariable("AzureKeyVaultEndpoint");
+
+        //if (string.IsNullOrWhiteSpace(keyVaultEndpoint) == false)
+        //{
+        //    builder.ConfigurationBuilder
+        //        // Writes vault entries into IConfiguration only and NOT environmental variables
+        //        // Requires the Azure.Extensions.AspNetCore.Configuration.Secrets NuGet package
+        //        .AddAzureKeyVault(new Uri(keyVaultEndpoint), credential);
+        //}
+        // -------------------------------------End: Key Vault Example
+    }
+
+}

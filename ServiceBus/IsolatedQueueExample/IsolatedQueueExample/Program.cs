@@ -2,6 +2,7 @@ using Azure.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using QueueExample;
+using QueueExample.Services;
 
 
 var host = new HostBuilder()
@@ -11,37 +12,41 @@ var host = new HostBuilder()
         // var credentials = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ExcludeSharedTokenCacheCredential = true });
         var credentials = new DefaultAzureCredential();
 
+        // -------------------------------------Start: App Configuration Example
         // Required NuGet packages for Azure App Configuration:
         // 1. Azure.Identity
         // 2. Microsoft.Extensions.Configuration.AzureAppConfiguration
-
-        var azureAppConfigurationEndpointUri = Environment.GetEnvironmentVariable("AzureAppConfigurationEndpoint");
-
         // Docs: https://docs.microsoft.com/en-us/azure/azure-app-configuration/quickstart-azure-functions-csharp?tabs=isolated-process#connect-to-an-app-configuration-store
-        builder.AddAzureAppConfiguration(options =>
-        {
-            options.Connect(new Uri(azureAppConfigurationEndpointUri), credentials)
-                .ConfigureKeyVault(kv =>
-                {
-                    kv.SetCredential(credentials);
-                });
-        });
 
+        //var azureAppConfigurationEndpointUri = Environment.GetEnvironmentVariable("AzureAppConfigurationEndpoint");
+
+        //builder.AddAzureAppConfiguration(options =>
+        //{
+        //    options.Connect(new Uri(azureAppConfigurationEndpointUri), credentials)
+        //        .ConfigureKeyVault(kv =>
+        //        {
+        //            kv.SetCredential(credentials);
+        //        });
+        //});
+        // -------------------------------------End: App Configuration Example
+
+        // -------------------------------------Start: Key Vault Example
         // Required NuGet packages for direct key vault connection:
         // 1. Azure.Identity
         // 2. Azure.Extensions.AspNetCore.Configuration.Secrets 
-
         // Example: https://github.com/mizrael/AzureFunction-KeyVault/blob/main/Program.cs
-        //builder.AddEnvironmentVariables();
 
-         //           var tmpConfig = builder.Build();
-         //           var vaultUri = tmpConfig["AzureKeyVaultEndpoint"];
-         //           if(string.IsNullOrWhiteSpace(vaultUri)){
-         //               throw new ArgumentException("please provide a valid VaultUri");
-         //           }
+        builder.AddEnvironmentVariables();
 
-         //           builder.AddAzureKeyVault(new Uri(vaultUri), credentials);
+        var keyVaultEndpointUri = Environment.GetEnvironmentVariable("AzureKeyVaultEndpoint");
 
+        if (string.IsNullOrWhiteSpace(keyVaultEndpointUri))
+        {
+            throw new ArgumentException("please provide a valid VaultUri");
+        }
+
+        builder.AddAzureKeyVault(new Uri(keyVaultEndpointUri), credentials);
+        // -------------------------------------End: Key Vault Example
     })
     .ConfigureFunctionsWorkerDefaults(builder =>
     {
@@ -49,7 +54,15 @@ var host = new HostBuilder()
     })
     .ConfigureServices((builder, sc) =>
     {
-        sc.AddQueueExamplesDependencies(builder.Configuration);
+        var configuration = builder.Configuration;
+
+        var setting = new ServiceSettings
+        {
+            QueueConnectionString = configuration["ServiceBusConnectionString"], // configuration will be populated with both environment variables (default behavior) and app configuration (due to code below).
+            QueueName = configuration["ServiceBusQueueName"]
+        };
+
+        sc.AddQueueExampleServices(setting);
     })
     .Build();
 
