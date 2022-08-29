@@ -11,16 +11,16 @@ This Azure Function has two functions
 
 ## Startup.cs changes you need to make 
 You should do one of the following 
-1. Comment out both the Key Vault or App Configuration because you only intend to use the stuff in local.settings.json.
-2. Comment out Key Vault code because you intented to access everything via App Configuration
-3. Comment out App Configuration code because you intented to access everything via Key Vault
+1. Comment out both the **Azure Key Vault** or **Azure App Configuration** because you only intend to use the stuff in local.settings.json.
+2. Comment out **Azure Key Vault** and uncomment **Azure App Configuration** code because you intented to access everything via **Azure App Configuration**
+3. Comment out **Azure App Configuration** and uncomment **Azure Key Vault** code because you intented to access everything via **Azure Key Vault**
 
-## Azure Key Vault change you need to make
+## Azure Key Vault changes you need to make
 1. You'll need to give yourself permission to access the Azure Key Vault for this to work.  This is done under "Access Policies"
 2. You'll need to add some secrets if you want to pull them out via the HttpTrigger.
 3. If you want the connection string for the ServiceBusTrigger binding to come from key vault, add a secret called ServiceBusConnectionString and update the value to be a connection string to your service bus.
 
-## Azure App Configuration change you need to make
+## Azure App Configuration changes you need to make
 1. You'll need to create a managed identity for your App Configuration.
 2. You'll have to give that managed identity permission to access your key vault
 3. You'll need to give yourself "App Configuration Data Reader" permission to access the App Configuration for this to work.  This is done under "Access Policies"
