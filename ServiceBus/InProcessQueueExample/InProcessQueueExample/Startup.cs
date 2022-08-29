@@ -27,15 +27,9 @@ public class Startup : FunctionsStartup
     // Note: This is called BEFORE Configure
     public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
     {
-        // Microsoft's current guidance for Azure Functions that are in the cloud is to use the reference notation
-        // https://docs.microsoft.com/en-us/azure/app-service/app-service-key-vault-references?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=azure-cli#reference-syntax
-        // which looks like this (note that it EXCLUDES the version):
-        // @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/)
-
         // You might need this depending on your local dev env
         // var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ExcludeSharedTokenCacheCredential = true });
         var credential = new DefaultAzureCredential();
-
 
         // -------------------------------------Start: App Configuration Example
         // Required NuGet packages for Azure App Configuration:
@@ -58,6 +52,12 @@ public class Startup : FunctionsStartup
 
 
         // -------------------------------------Start: Key Vault Example
+        // Microsoft's current guidance for using Key Vault in an Azure Functions is to use the reference notation
+        // https://docs.microsoft.com/en-us/azure/app-service/app-service-key-vault-references?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=azure-cli#reference-syntax
+        // which looks like this (note how I did NOT include the version):
+        // @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/)
+        // Note: This reference notation does NOT work locally.  It only works in the cloud configuration!!!
+
         // Required NuGet packages for Azure App Configuration:
         // 1. Azure.Identity
         // 2. Azure.Extensions.AspNetCore.Configuration.Secrets
