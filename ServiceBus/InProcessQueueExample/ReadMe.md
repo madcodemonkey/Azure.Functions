@@ -5,9 +5,10 @@ This Azure Function has two functions
 
 ## local.settings.json changes you need to make
 1. Update AZURE_TENANT_ID to your tenant id.  You'll find that info your Azure Active Driectory "Overview".
-2. If you don't want to use key vault or Azure App Configuration for connection string info, update ServiceBusConnectionString with your Service Bus connection string 
-3. If you want configuration to come from Azure Key vault, uncomment and update AzureKeyVaultEndpoint (see Key Vault below for more info) 
-4. If you want configuratoin to come from Azure App Confifguration, uncomment and update AzureAppConfigurationEndpoint (see App Configuration below for more info) 
+2. Update ServiceBusQueueName with the name of your Service Bus queue.
+3. If you don't want to use key vault or Azure App Configuration for connection string info, update ServiceBusConnectionString with your Service Bus connection string 
+4. If you want configuration to come from Azure Key vault, uncomment and update AzureKeyVaultEndpoint (see Key Vault below for more info) 
+5. If you want configuratoin to come from Azure App Confifguration, uncomment and update AzureAppConfigurationEndpoint (see App Configuration below for more info) 
 
 ## Startup.cs changes you need to make 
 You should do one of the following 
