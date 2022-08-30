@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
-namespace InProcessQueueExample;
+namespace InProcessHubExample;
 
 public class ShowSecretFunction
 {

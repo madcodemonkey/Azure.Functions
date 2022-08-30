@@ -1,0 +1,14 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AZURE_TENANT_ID": "6046876D-D414-4947-AC6F-81A6C75D7C1C",
+    "AzureKeyVaultEndpoint": "https://yourvault.vault.azure.net/",
+    "AzureAppConfigurationEndpoint": "https://yourappconfiguration.azconfig.io",
+
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+
+    "EventHubConnectionString": "---your event hub connection string here---",
+    "EventHubName": "myfirsthub"
+  }
+}

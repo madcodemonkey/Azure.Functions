@@ -18,7 +18,7 @@ namespace QueueExample
         }
 
         // Binding example: https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-service-bus-trigger?tabs=in-process%2Cfunctionsv2&pivots=programming-language-csharp#example
-        [FunctionName("YatesQueueTrigger")]
+        [FunctionName("QueueTrigger")]
         public async Task Run([ServiceBusTrigger("%ServiceBusQueueName%", Connection = "ServiceBusConnectionString")] string myQueueItem,
             Int32 deliveryCount, DateTime enqueuedTimeUtc, string messageId, ILogger log)
         {
