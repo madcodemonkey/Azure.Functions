@@ -1,13 +1,14 @@
 # Isolated Queue Example
 This Azure Function has two functions
-1. One hooks up to an existing service bus.  Currently it will receive the Deal.cs class (under QueueExample.Model library) from the service bus queue specified in the appsettings.json file.
+1. One hooks up to an existing service bus.  Currently it will receive the Deal.cs class (under QueueExample.Model library) from the service bus queue specified in the local.settings.json file.
 2. One has an HttpTrigger for pulling secrets from either Azure Key Vault or Azure App Configuration.  This is intended only to show that you are hooked up.
 
 ## local.settings.json changes you need to make
 1. Update ServiceBusConnectionString with your Service Bus connection string 
-2. Update AZURE_TENANT_ID to your tenant id.  You'll find that info your Azure Active Driectory "Overview".
-3. If you want configuration to come from Azure Key vault, uncomment and update AzureKeyVaultEndpoint (see Key Vault below for more info) 
-4. If you want configuratoin to come from Azure App Confifguration, uncomment and update AzureAppConfigurationEndpoint (see App Configuration below for more info) 
+2. Update ServiceBusQueueName with the name of your Service Bus queue.
+3. Update AZURE_TENANT_ID to your tenant id.  You'll find that info your Azure Active Driectory "Overview".
+4. If you want configuration to come from Azure Key vault, uncomment and update AzureKeyVaultEndpoint (see Key Vault below for more info) 
+5. If you want configuratoin to come from Azure App Confifguration, uncomment and update AzureAppConfigurationEndpoint (see App Configuration below for more info) 
 
 ## Warnings
 The host evaluates special bindings like ServiceBusTrigger, EventHubTrigger, etc. before the program.cs file is even run, so with connections and other information used by the binding there are limitations:
