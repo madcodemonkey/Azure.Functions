@@ -1,6 +1,6 @@
 # In-process Hub Example
 This Azure Function has two functions
-1. One hooks up to an existing service bus.  Currently it will receive the Deal.cs class (under HubExample.Model library) from the service bus queue specified in the local.settings.json file.
+1. One hooks up to an existing event hub.  Currently it will receive the Deal.cs class (under HubExample.Model library) from the event hub specified in the local.settings.json file.
 2. One has an HttpTrigger for pulling secrets from either Azure Key Vault or Azure App Configuration.  This is intended only to show that you are hooked up.
 
 ## local.settings.json changes you need to make
