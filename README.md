@@ -9,8 +9,8 @@
    - InProcessHubExample - Event Hub in-process example which receives a deal (deal.cs) message from an Event Hub.
    - IsolatedHubExample - Event Hub isolated process example which receives a deal (deal.cs) message from an Event Hub.
 - Normal
-   - DotNet6CoreIsolated - Shows serveral HttpTriggers in .NET 6 Core using the new Isolated process mode.
-   - DotNet6CoreNotIsolated - Shows serveral HttpTriggers in .NET 6 Core using the older In Process mode.
+   - InProcessHttpTriggerExample - Shows serveral HttpTriggers in .NET 6 Core using the older In Process mode.
+   - IsolatedHttpTriggerExample - Shows serveral HttpTriggers in .NET 6 Core using the new Isolated process mode.
 - Powershell 
    - HttpTriggered - A PowerShell fired by a HttpTrigger running in an Azure Function (use VSCode to examine and run this code)
    - ServiceBusTriggered 
