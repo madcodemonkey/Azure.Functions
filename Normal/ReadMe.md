@@ -2,8 +2,8 @@
 Theses are Azure Function that use HttpBinding.
 
 ## Projects List
-- InProcessHttpTriggerExample - Shows serveral HttpTriggers in .NET 6 Core using the older In Process mode.
-- IsolatedHttpTriggerExample - Shows serveral HttpTriggers in .NET 6 Core using the new Isolated process mode.vent Hub isolated process example (IsolatedHubExample) - This is an Azure Function used to receive deal (deal.cs) message from the event hub.
+- InProcessHttpTriggerExample - Shows serveral HttpTriggers using the In Process mode.
+- IsolatedHttpTriggerExample - Shows serveral HttpTriggers  using the new Isolated process mode.
   
 Notes
 - See the readme.md file in each project for setup instructions.
