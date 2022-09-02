@@ -3,8 +3,7 @@
 ## Projects List
 - Common
    - AppInsightsEnhancedWithSerilogSink - A Serilog example that I was using for common logging (TODO: it needs work)
-- Durable 
-   - DynamicCreationOfActivities - Shows a durable function example where I dynamically run activities base on the way the HttpTrigger is called.
+- Durable - durable function examples
 - Event Hub - Azure functions with event hub trigger
 - Normal
    - InProcessHttpTriggerExample - Shows serveral HttpTriggers in .NET 6 Core using the older In Process mode.
