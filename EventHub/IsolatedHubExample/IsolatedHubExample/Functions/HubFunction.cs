@@ -18,11 +18,12 @@ public class HubFunction
     }
 
     [Function("HubFunction")]
-    public async Task Run([EventHubTrigger("%EventHubName%", Connection = "EventHubConnectionString")] string[] input)
+    public async Task Run([EventHubTrigger("%EventHubName%", Connection = "EventHubConnectionString")] string[] input, 
+        FunctionContext context)
     {
         foreach (string oneInput in input)
         {
-            _logger.LogInformation($"First Event Hubs triggered message: {input[0]}");
+            _logger.LogInformation($"C# Event Hub trigger function processed a message: {oneInput}");
 
             Deal? someDeal = JsonConvert.DeserializeObject<Deal>(oneInput);
             if (someDeal != null && someDeal.IsGoodDeal == false)
