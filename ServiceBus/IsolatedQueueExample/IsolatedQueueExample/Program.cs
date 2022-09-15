@@ -63,9 +63,13 @@ var host = new HostBuilder()
     .ConfigureServices((builder, sc) =>
     {
         var configuration = builder.Configuration;
-
+        
+        // Note: ServiceBusConnectionString__fullyQualifiedNamespace is only used when you want to use your identity to talk to service bus.  
+        //       It also requires the use of the  Microsoft.Azure.Functions.Worker.Extensions.ServiceBus NuGet package version >= 5.0.0; otherwise, 
+        //       will not be picked up.
         var setting = new ServiceSettings
         {
+            QueueFullyQualifiedNamespace = Environment.GetEnvironmentVariable("ServiceBusConnectionString__fullyQualifiedNamespace") ?? string.Empty,
             QueueConnectionString = configuration["ServiceBusConnectionString"], // configuration will be populated with both environment variables (default behavior) and app configuration (due to code below).
             QueueName = configuration["ServiceBusQueueName"]
         };
