@@ -56,7 +56,7 @@ var host = new HostBuilder()
         //}
         // -------------------------------------End: Key Vault Example
     })
-    .ConfigureFunctionsWorkerDefaults(builder =>
+    .ConfigureFunctionsWorkerDefaults((context, builder) =>
     {
 
     })
