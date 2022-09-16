@@ -18,7 +18,7 @@ public class ShowSecretFunction
     }
 
     [FunctionName("ShowSecretFunction")]
-    public async Task<IActionResult> Run(
+    public IActionResult Run(
         [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
         ILogger log)
     {
@@ -26,7 +26,7 @@ public class ShowSecretFunction
 
         string keyName = req.Query["keyName"];
 
-        string? data = _configuration[keyName];
+        string data = _configuration[keyName];
 
         string responseMessage = data == null ? $"Key named {keyName} was not Found" : $"{keyName}={data}";
 

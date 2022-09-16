@@ -16,9 +16,6 @@ public class QueueService : IQueueService
     {
         _logger = logger;
         _settings = settings;
-
-        _logger.LogWarning("Connection string: " + _settings.QueueConnectionString);
-        _logger.LogWarning("Fully Qualified Namespace: " + _settings.QueueFullyQualifiedNamespace);
     }
 
     /// <summary>The service bus client.</summary>

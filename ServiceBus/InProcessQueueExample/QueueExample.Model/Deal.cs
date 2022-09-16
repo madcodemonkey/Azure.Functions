@@ -6,7 +6,7 @@ public class Deal
 
     /// <summary>Both the order it was created and the order it was sent.</summary>
     public int Order { get; set; }
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
     public DateTime CreatedOnDate { get; set; }
     public int NumberOfYearsToKeepOnRecord { get; set; }
     public bool IsGoodDeal { get; set; }

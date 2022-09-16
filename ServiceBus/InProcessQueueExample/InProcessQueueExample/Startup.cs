@@ -17,6 +17,7 @@ public class Startup : FunctionsStartup
 
         var setting = new ServiceSettings
         {
+            QueueFullyQualifiedNamespace = Environment.GetEnvironmentVariable("ServiceBusConnectionString__fullyQualifiedNamespace") ?? string.Empty,
             QueueConnectionString = configuration["ServiceBusConnectionString"], // configuration will be populated with both environment variables (default behavior) and app configuration (due to code below).
             QueueName = configuration["ServiceBusQueueName"]
         };

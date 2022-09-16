@@ -8,6 +8,10 @@
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
     "ServiceBusQueueName": "yatesqueue",
+    // ServiceBusConnectionString__fullyQualifiedNamespace is used for managed identity in the cloud and using your credentials 
+    // it requires the use of  Microsoft.Azure.WebJobs.Extensions.ServiceBus  NuGet package version >= 5.0.0
+    // it requires that the managed identity and YOU have the following roles in the service bus: 'Azure Service Bus Data Receiver' and 'Azure Service Bus Data Sender'
+    //"ServiceBusConnectionString__fullyQualifiedNamespace": "yourNameSpaceHere.servicebus.windows.net",
     "ServiceBusConnectionString": "---your service bus connection string here---"
   }
 }
