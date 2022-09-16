@@ -5,7 +5,6 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Threading.Tasks;
 
 namespace DotNetCoreNotIsolated.Functions;
 
@@ -21,7 +20,7 @@ public class FunctionUserException1
     }
 
     [FunctionName("UserException1")]
-    public async Task<IActionResult> Run(
+    public IActionResult Run(
         [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
         ILogger log)
     {
