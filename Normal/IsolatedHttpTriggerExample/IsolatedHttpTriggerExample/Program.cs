@@ -1,7 +1,14 @@
 using DotNetCoreIsolated;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+
+// Logging notes
+// - For isolated Azure Functions, add either APPINSIGHTS_INSTRUMENTATIONKEY or APPLICATIONINSIGHTS_CONNECTION_STRING,
+//   which will be the preferred way of doing this in the future, to your local.settings.json file.
+// - It is recommended that you update your host.json files if applicationInsights settings is missing
+// - The Microsoft documentation, https://learn.microsoft.com/en-us/azure/azure-functions/dotnet-isolated-process-guide#start-up-and-configuration, 
+//   list an example that doesn't work even if you include  Microsoft.Azure.Functions.Worker.ApplicationInsights, which is in pre-release.
+//   perhaps it will work in the future and also be the solution to doing Telemetry calls to Application Insights, which doesn't work with
+//   Microsoft.ApplicationInsights.AspNetCore either. 
 
 var host = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults(builder =>
@@ -12,15 +19,6 @@ var host = new HostBuilder()
     })
     .ConfigureServices(s =>
     {
-        s.AddLogging(logging =>
-        {
-            // REQUIRES: Microsoft.ApplicationInsights.WorkerService NuGet package or the AddApplicationInsights extension will NOT be available!
-            // Trace logs lacks a stack trace logs only the text passed to LogError(ex, thisText), but you can find the stack trace in the Exception logs
-            // Works with either a APPLICATIONINSIGHTS_CONNECTION_STRING or APPINSIGHTS_INSTRUMENTATIONKEY
-            // Note: There are also changes to the host.json file control logging.
-            logging.AddApplicationInsights();
-        });
-       
         s.AddDotNetCoreIsolatedDependencies();
     })
     .Build();
