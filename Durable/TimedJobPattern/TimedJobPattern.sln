@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33927.249
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimedJobPattern", "TimedJobPattern\TimedJobPattern.csproj", "{F5B17F84-6E5A-4E93-9E42-A567BF300F86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimedJobPattern.Services", "TimedJobPattern.Services\TimedJobPattern.Services.csproj", "{2AFD25EA-CB43-47FA-90A8-ACE751206979}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5B17F84-6E5A-4E93-9E42-A567BF300F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B17F84-6E5A-4E93-9E42-A567BF300F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B17F84-6E5A-4E93-9E42-A567BF300F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B17F84-6E5A-4E93-9E42-A567BF300F86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AFD25EA-CB43-47FA-90A8-ACE751206979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AFD25EA-CB43-47FA-90A8-ACE751206979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AFD25EA-CB43-47FA-90A8-ACE751206979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AFD25EA-CB43-47FA-90A8-ACE751206979}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4180988A-490B-4971-89FD-2FA41E2B18F0}
+	EndGlobalSection
+EndGlobal
