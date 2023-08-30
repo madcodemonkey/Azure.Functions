@@ -12,12 +12,12 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddServices(this IServiceCollection sc, IConfiguration config)
     {
-        var applicationSettings = ConfigureSectionSettings<ApplicationSettings>(sc, config, ApplicationSettings.SectionName);
+        ConfigureSectionSettings<ApplicationSettings>(sc, config, ApplicationSettings.SectionName);
 
         sc.AddSingleton<IMemoryCache, MemoryCache>();
 
-        //sc.AddScoped<IBlobSasBuilderService, BlobSasBuilderService>();
-        //sc.AddTransient<ICustomComputerVisionService, CustomComputerVisionService>();
+        sc.AddScoped<IWorkerService, WorkerService>();
+        sc.AddScoped<IWorkerConfigurationService, WorkerConfigurationService>();
 
         return sc;
     }

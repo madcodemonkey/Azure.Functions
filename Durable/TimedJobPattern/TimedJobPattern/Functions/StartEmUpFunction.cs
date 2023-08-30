@@ -17,7 +17,7 @@ public class StartEmUpFunction
 
         // Function input comes from the request content.
         string instanceId = await client.ScheduleNewOrchestrationInstanceAsync(
-            nameof(OrchestratorMainFunction.MainOrchestrator));
+            nameof(OrchestratorMainFunction.O_MainOrchestrator));
 
         logger.LogInformation("Started orchestration with ID = '{instanceId}'.", instanceId);
 

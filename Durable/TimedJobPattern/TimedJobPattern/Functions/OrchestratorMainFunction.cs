@@ -1,13 +1,14 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.DurableTask;
 using Microsoft.Extensions.Logging;
+using TimedJobPattern.Modals;
 
 namespace TimedJobPattern;
 
 public class OrchestratorMainFunction
 {
-    [Function(nameof(MainOrchestrator))]
-    public static async Task<List<string>> MainOrchestrator(
+    [Function(nameof(O_MainOrchestrator))]
+    public static async Task<string> O_MainOrchestrator(
         [OrchestrationTrigger] TaskOrchestrationContext context)
     {
         // WARNING!!! You are within the context of an orchestrator function.  
@@ -16,17 +17,28 @@ public class OrchestratorMainFunction
         // WARNING!!! Keep in mind that everything returned from an activity function is serialized to blob storage so keep your return results small!!
 
         ILogger logger = context.CreateReplaySafeLogger(nameof(OrchestratorMainFunction));
-        logger.LogInformation("Saying hello.");
-        var outputs = new List<string>();
+        var workerId = context.GetInput<Guid>();
+        string result;
 
-        // Replace name and input with values relevant for your Durable Functions Activity
-        outputs.Add(await context.CallActivityAsync<string>(nameof(ActivitySayHelloFunction.SayHello), "Tokyo"));
-        outputs.Add(await context.CallActivityAsync<string>(nameof(ActivitySayHelloFunction.SayHello), "Seattle"));
-        outputs.Add(await context.CallActivityAsync<string>(nameof(ActivitySayHelloFunction.SayHello), "London"));
+        var workerActivityInformation = new WorkerActivityInformation { WorkerId = workerId, InstanceId = context.InstanceId };
 
-        // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
-        return outputs;
+        try
+        {
+            await context.CallActivityAsync(nameof(ActivityHeartBeatFunction.A_DoHeartBeatAsync), workerActivityInformation);
+
+            var wasSuccessful = await context.CallActivityAsync<bool>(nameof(ActivityWorkFunction.A_DoWorkAsync), workerActivityInformation);
+            result = wasSuccessful ? "Work was successful!" : "Work was a failure!";
+
+            await context.CallActivityAsync(nameof(ActivityComputeNextRunFunction.A_ComputeNextRunAsync), workerActivityInformation);
+        }
+        catch (Exception ex)
+        {
+            result = "Work generated an unhandled exception!";
+            logger.LogError(ex, $"An unhandled exception was caught in orchestrator for worker id {workerId} for instance id {context.InstanceId}!");
+        }
+
+        logger.LogInformation($"Finished with: {result}");
+        
+        return result;
     }
-
-  
 }

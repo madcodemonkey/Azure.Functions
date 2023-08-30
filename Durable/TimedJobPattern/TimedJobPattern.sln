@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimedJobPattern", "TimedJob
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimedJobPattern.Services", "TimedJobPattern.Services\TimedJobPattern.Services.csproj", "{2AFD25EA-CB43-47FA-90A8-ACE751206979}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimedJobPattern.Modals", "TimedJobPattern.Modals\TimedJobPattern.Modals.csproj", "{A69F9B3D-CAB0-4D75-A55E-32DDDC56FA4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2AFD25EA-CB43-47FA-90A8-ACE751206979}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AFD25EA-CB43-47FA-90A8-ACE751206979}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AFD25EA-CB43-47FA-90A8-ACE751206979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A69F9B3D-CAB0-4D75-A55E-32DDDC56FA4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A69F9B3D-CAB0-4D75-A55E-32DDDC56FA4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A69F9B3D-CAB0-4D75-A55E-32DDDC56FA4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A69F9B3D-CAB0-4D75-A55E-32DDDC56FA4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
