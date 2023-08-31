@@ -6,7 +6,7 @@ using TimedJobPattern.Services;
 
 namespace TimedJobPattern.Functions
 {
-    public class TimerFunction
+    public class OrchestratorTimerFunction
     {
         private readonly IWorkerService _workerService;
         private readonly ILogger _logger;
@@ -14,10 +14,10 @@ namespace TimedJobPattern.Functions
         /// <summary>
         /// Constructor
         /// </summary>
-        public TimerFunction(ILoggerFactory loggerFactory, IWorkerService workerService)
+        public OrchestratorTimerFunction(ILoggerFactory loggerFactory, IWorkerService workerService)
         {
             _workerService = workerService;
-            _logger = loggerFactory.CreateLogger<TimerFunction>();
+            _logger = loggerFactory.CreateLogger<OrchestratorTimerFunction>();
         }
 
         /// <summary>
@@ -26,15 +26,15 @@ namespace TimedJobPattern.Functions
         /// <param name="myTimer">Timer info</param>
         /// <param name="client">The client that allows us to start orchestrators</param>
         /// <param name="cancellationToken">A cancellation token</param>
-        [Function("TimerFunction")]
-        public async Task Run([TimerTrigger("0 */1 * * * *")] MyInfo myTimer, [DurableClient] DurableTaskClient client,
+        [Function("OrchestratorTimerFunction")]
+        public async Task RunAsync([TimerTrigger("0 */1 * * * *")] MyInfo myTimer, [DurableClient] DurableTaskClient client,
             CancellationToken cancellationToken)
         {
             await FindAndTerminateDeadWorkersAsync(client, cancellationToken);
 
             await FindAndStartPendingWorkersAsync(client);
 
-            _logger.LogInformation($"Next timer schedule at: {myTimer.ScheduleStatus.Next}");
+            _logger.LogInformation($"Next timer schedule at: {myTimer.ScheduleStatus.Next} local time or {myTimer.ScheduleStatus.Next.ToUniversalTime()} UTC");
         }
 
         /// <summary>

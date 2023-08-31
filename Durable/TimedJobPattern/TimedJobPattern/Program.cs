@@ -1,9 +1,15 @@
 using DotNetCoreIsolated;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using TimedJobPattern;
 
 var host = new HostBuilder()
-    .ConfigureFunctionsWorkerDefaults()
+    .ConfigureFunctionsWorkerDefaults((hostContext, builder) =>
+    {
+        // https://docs.microsoft.com/en-us/azure/azure-functions/dotnet-isolated-process-guide#middleware
+        // Register our custom middleware with the worker
+        builder.UseMiddleware<ExceptionMiddleware>();
+    })
     .ConfigureAppConfiguration((hostContext, builder) =>
     {
         // Reference: https://stackoverflow.com/q/74269765/97803
