@@ -20,14 +20,14 @@ public class WorkerConfigurationService : IWorkerConfigurationService
         if (workerConfig.AddIntervalToNextRunTime)
         {
             // If we've been down for a long time...go ahead and catch up the next run time till we surpass the current UTC time.
-            while (workerConfig.NextRunTime < DateTime.UtcNow)
+            while (result < DateTime.UtcNow)
             {
-                workerConfig.NextRunTime = workerConfig.NextRunTime.AddMinutes(workerConfig.RunTimeIntervalInMinutes);
+                result = result.AddMinutes(workerConfig.RunTimeIntervalInMinutes);
             }
 
             // Determine if we should jump up another interval or leave it alone.
 
-            var timeDifference = workerConfig.NextRunTime - DateTime.UtcNow;
+            var timeDifference = result - DateTime.UtcNow;
             var percentageComplete = 1.00 - timeDifference.TotalMinutes / workerConfig.RunTimeIntervalInMinutes;
             if (percentageComplete > 0.5)
             {
@@ -38,7 +38,7 @@ public class WorkerConfigurationService : IWorkerConfigurationService
                 // Example 2: NextRunTime 14:00 and current time 13:25 and interval of 60 minutes.
                 //            35 minutes before the next interval so we are 1 - 35/60 = 0.42 so we have already
                 //            waited for 42% of the interval, so we not adjust the interval so it will run again at 14:00.
-                result = workerConfig.NextRunTime.AddMinutes(workerConfig.RunTimeIntervalInMinutes);
+                result = result.AddMinutes(workerConfig.RunTimeIntervalInMinutes);
             }
 
         }
