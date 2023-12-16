@@ -1,7 +1,5 @@
 # Summary
-Theses are Azure Function that use HttpBinding.
-
-It demonstrates
+This project contains multiple Azure Functions that use the HttpBinding.  It demonstrates:
 - The use of an isloated process (note that in process funcations are NOT supported in .NET 7 or .NET 8)
 - FunctionSimpleGet - GET method (two different ways of getting query strings)
 - FunctionSimplePost - POST method (two different ways of deserializing with Microsoft's JsonSerializer)
