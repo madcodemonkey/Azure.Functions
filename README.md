@@ -1,5 +1,8 @@
 # Azure Functions
 
+# Work in Progress converting .NET 6 to .NET 8  (see [DotNet6](https://github.com/madcodemonkey/Azure.Functions/tree/DotNet6) if something is broken.)
+
+
 ## Projects List
 - Common
    - AppInsightsEnhancedWithSerilogSink - A Serilog example that I was using for common logging (TODO: it needs work)
