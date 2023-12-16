@@ -2,13 +2,15 @@
 
 # Work in Progress converting .NET 6 to .NET 8  (see [DotNet6](https://github.com/madcodemonkey/Azure.Functions/tree/DotNet6) if something is broken.)
 
-
 ## Projects List
+### .NET 8
+- HttpTriggerExample01
+
+### Still .NET 6  (in progress.....)
 - Common
    - AppInsightsEnhancedWithSerilogSink - A Serilog example that I was using for common logging (TODO: it needs work)
 - Durable - durable function examples
 - Event Hub - Azure functions with event hub trigger
-- Normal - HttpTrigger bindings.
 - Powershell - PowerShell in Azure Function examples
 - Service Bus - Azure functions with service bus trigger (queue or topic)
 

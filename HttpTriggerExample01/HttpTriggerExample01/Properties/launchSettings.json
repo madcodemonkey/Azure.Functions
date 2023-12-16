@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "HttpTriggerExample": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7020",
+      "launchBrowser": false
+    }
+  }
+}

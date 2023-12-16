@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "243fde2b-d062-4fd7-bfa2-1cf78cf6d810",
+		"name": "Github-Azure-Functions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2277005"
+	},
+	"item": [
+		{
+			"name": "HttpTriggerExample01",
+			"item": [
+				{
+					"name": "FunctionSimpleGet (no parameters)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/FunctionSimpleGet",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"FunctionSimpleGet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FunctionSimpleGet (parameters)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/FunctionSimpleGet?greeting=\"hi\"&lastname=\"Simpson\"",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"FunctionSimpleGet"
+							],
+							"query": [
+								{
+									"key": "greeting",
+									"value": "\"hi\""
+								},
+								{
+									"key": "lastname",
+									"value": "\"Simpson\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FunctionSimplePost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"greeting\": \"hi\",\r\n    \"lastname\": \"Simpson\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/FunctionSimplePost",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"FunctionSimplePost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserException1 (ArgumentException)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/UserException1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"UserException1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserException2 (ArgumentNullException)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/UserException2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"UserException2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserException3 (UnauthorizedAccessException)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/UserException3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"UserException3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserException4 (DivideByZeroException)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/UserException4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"UserException4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:7020",
+			"type": "string"
+		}
+	]
+}

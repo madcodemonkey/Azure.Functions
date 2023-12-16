@@ -1,9 +1,0 @@
-{
-  "IsEncrypted": false,
-  "Values": {
-    "APPINSIGHTS_INSTRUMENTATIONKEY": "---Your app insights key here---",
-    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "RunInformation": "In-Process 1 [My message]"
-  }
-}

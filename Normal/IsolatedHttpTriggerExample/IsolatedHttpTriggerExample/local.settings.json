@@ -1,9 +1,0 @@
-{
-  "IsEncrypted": false,
-  "Values": {
-    "APPLICATIONINSIGHTS_CONNECTION_STRING": "---Your app insights connection string here---",
-    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
-    "RunInformation": "Isolated 6 [My message]"
-  }
-}

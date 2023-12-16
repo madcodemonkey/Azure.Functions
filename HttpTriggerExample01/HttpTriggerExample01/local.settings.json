@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "SomeNonNestedSetting":  "SomeValue",
+    "ServiceInfo:RunInformation": ".NET 8 Example",
+    "ServiceInfo:Greeting": "Hello dude!"
+  }
+}
