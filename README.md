@@ -1,6 +1,6 @@
 # Azure Functions
 
-# Work in Progress converting .NET 6 to .NET 8  (see [DotNet6](https://github.com/madcodemonkey/Azure.Functions/tree/DotNet6) if something is broken.)
+# Work in Progress converting .NET 6 to .NET 8  (see the [DotNet6](https://github.com/madcodemonkey/Azure.Functions/tree/DotNet6) branch if something is broken.)
 
 ## Projects List
 ### .NET 8
