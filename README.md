@@ -10,6 +10,5 @@
 - Service Bus - Azure functions with service bus trigger (queue or topic)
 
 ## Branching scheme
-- DotNet8: .NET Core 8.0 examples (In Progress.....)
-- DotNet6: .NET Core 6.0 examples (with the current exception of AppInsightsEnhancedWithSerilogSink and PowerShell items)
-
+- [DotNet8](https://github.com/madcodemonkey/Azure.Functions/tree/DotNet8): .NET 8.0 examples
+- [DotNet6](https://github.com/madcodemonkey/Azure.Functions/tree/DotNet6): .NET 6.0 examples (with the current exception of AppInsightsEnhancedWithSerilogSink and PowerShell items)
