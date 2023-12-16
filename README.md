@@ -4,7 +4,7 @@
 
 ## Projects List
 ### .NET 8
-- HttpTriggerExample01
+- HttpTriggerExample01 - HttpTrigger binding example.
 
 ### Still .NET 6  (in progress.....)
 - Common
