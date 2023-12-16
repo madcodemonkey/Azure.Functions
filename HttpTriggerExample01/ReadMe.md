@@ -8,13 +8,11 @@ This project contains multiple Azure Functions that use the HttpBinding.  It dem
 - The use of secrets.
 
 # Setup
----
 - This project depends on Azurite being installed on your PC.  
 - Update your Core tools if necessary.
   - In Visual Studio, you can go to Tools > Options > Projects and Solutions > Azure Functions and press the "Check for Updates" button
 
 # Secret notes
----
 I've noticed that you can override local.settings.json values with two different formats in secrets file
 ## Format 1
 ```json
@@ -38,7 +36,6 @@ I've noticed that you can override local.settings.json values with two different
 ```
 
 # Postman collection
----
 There is a postman collection at the root of the repository that has folders for each project.
 See the HttpTriggerExample01 folder for all the methods that pertain to this Azure Function.
 
